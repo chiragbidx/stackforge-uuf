@@ -1,0 +1,26 @@
+{
+  "$schema": "https://railpack.com/schema.json",
+  "deploy": {
+    "aptPackages": ["git"],
+    "caches": {
+      "pnpm-store": {
+        "directory": "/root/.local/share/pnpm/store",
+        "type": "shared"
+      },
+      "next-cache": {
+        "directory": "/app/.next/cache",
+        "type": "shared"
+      },
+      "apt": {
+        "directory": "/var/cache/apt",
+        "type": "locked"
+      }
+    },
+    "steps": {
+      "install": {
+        "caches": ["pnpm-store", "next-cache", "apt"],
+        "commands": ["pnpm install --prefer-offline --no-frozen-lockfile"]
+      }
+    }
+  }
+}
